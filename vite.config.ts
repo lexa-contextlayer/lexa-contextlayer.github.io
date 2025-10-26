@@ -18,7 +18,6 @@ export default defineConfig(({ mode, command }) => ({
   build: {
     rollupOptions: {
       output: {
-        // Ensure JS files have .js extension
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]'
