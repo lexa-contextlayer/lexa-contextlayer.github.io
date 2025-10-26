@@ -1,35 +1,16 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-
-const queryClient = new QueryClient();
-
+// Simple test version to debug white page
 const App = () => {
-  // Add error boundary for debugging
-  try {
-    return (
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </QueryClientProvider>
-    );
-  } catch (error) {
-    console.error('App error:', error);
-    return <div>Error loading app: {String(error)}</div>;
-  }
+  return (
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <h1>Lexa - Test Page</h1>
+      <p>If you can see this, React is working!</p>
+      <p>Environment check:</p>
+      <ul>
+        <li>VITE_SUPABASE_URL: {import.meta.env.VITE_SUPABASE_URL || 'Not set'}</li>
+        <li>VITE_SUPABASE_PUBLISHABLE_KEY: {import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ? 'Set' : 'Not set'}</li>
+      </ul>
+    </div>
+  );
 };
 
 export default App;
